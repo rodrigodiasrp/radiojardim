@@ -1,0 +1,98 @@
+```html
+<!-- PLAYER RÁDIO JARDIM EUROPA -->
+<section class="radio-player">
+  <div class="radio-info">
+    <span class="radio-status"></span>
+    <div>
+      <h2>📻 Rádio Jardim Europa</h2>
+      <p>Grandes momentos em forma de música</p>
+    </div>
+  </div>
+
+  <audio id="radioAudio" controls preload="none">
+    <source
+      src="https://stm2.srvif.com:6748/;"
+      type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <p id="radioStatus">Clique em reproduzir para ouvir a rádio.</p>
+</section>
+
+<style>
+.radio-player {
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 24px;
+  background: #075b2a;
+  color: white;
+  border-radius: 18px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.radio-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.radio-info h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.radio-info p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.radio-status {
+  width: 12px;
+  height: 12px;
+  background: #45f28a;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#radioAudio {
+  display: block;
+  width: 100%;
+}
+
+#radioStatus {
+  font-size: 13px;
+  margin: 14px 0 0;
+}
+
+@media (max-width: 480px) {
+  .radio-player {
+    margin: 15px auto;
+    padding: 18px;
+  }
+
+  .radio-info h2 {
+    font-size: 19px;
+  }
+}
+</style>
+
+<script>
+const radio = document.getElementById("radioAudio");
+const statusRadio = document.getElementById("radioStatus");
+
+radio.addEventListener("playing", function () {
+  statusRadio.textContent = "▶ Rádio em reprodução!";
+});
+
+radio.addEventListener("waiting", function () {
+  statusRadio.textContent = "Conectando ao streaming...";
+});
+
+radio.addEventListener("error", function () {
+  statusRadio.textContent =
+    "Não foi possível reproduzir. Vamos confirmar a URL do áudio com a empresa.";
+});
+</script>
+```
